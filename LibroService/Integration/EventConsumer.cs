@@ -17,11 +17,12 @@ namespace LibroService.Integration
         public EventConsumer()
         {
 
+
             // Configurar la conexión a RabbitMQ
             var factory = new ConnectionFactory() { HostName = "localhost" };
             _connection = factory.CreateConnection();
-            _channel = _connection.CreateModel();
-
+            _channel = _connection.CreateModel(); 
+             
             _channel.ExchangeDeclare(exchange: "autor-agregado", type: ExchangeType.Fanout);
             
             var queueName = _channel.QueueDeclare().QueueName;
